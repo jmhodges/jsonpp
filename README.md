@@ -25,6 +25,7 @@ Then, simply decompress that file and copy the `jsonpp` binary
 inside to somewhere in your `$PATH`.
 
 To see it in action, pipe some example JSON into it:
+
     curl -s -L http://t.co/tYTq5Pu | jsonpp
 
 A source install requires a working [install of
