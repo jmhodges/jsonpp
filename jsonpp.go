@@ -52,16 +52,26 @@ func malformedJson(jsErr os.Error, js []uint8, lineNum int64) {
 
 	synErr, isSynError := (jsErr).(*json.SyntaxError)
 
-	fmt.Fprintf(os.Stderr, "ERROR: Broken json on line number %d: %s\n", lineNum, jsErr)
+	fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d: %s\n", lineNum, jsErr)
 
 	if (isSynError) {
+		prefix := ""
+		suffix := ""
+
 		begin := 0
-		if synErr.Offset > 10 {
-			begin = int(synErr.Offset - 10)
+		if synErr.Offset > 15 {
+			begin = int(synErr.Offset - 15)
+			prefix = "..."
 		}
-		end := begin + 20
-		if end > len(js) { end = len(js) }
-		fmt.Fprintf(os.Stderr, "  Context: %s\n", js[begin:end])
+
+		end := begin + 30
+		if end > len(js) {
+			end = len(js)
+		} else {
+			suffix = "..."
+		}
+
+		fmt.Fprintf(os.Stderr, "  Context: %s%s%s\n", prefix, js[begin:end], suffix)
 	}
 
 	os.Exit(1)
