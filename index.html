@@ -6,32 +6,92 @@
   <title>jmhodges/jsonpp @ GitHub</title>
 
   <style type="text/css">
+    
     body {
       margin-top: 1.0em;
-      background-color: #16a6d2;
+      background-color: #D5D9E8;
       font-family: Helvetica, Arial, FreeSans, san-serif;
       color: #000000;
     }
+
     #container {
       margin: 0 auto;
       width: 700px;
     }
-    h1 { font-size: 3.8em; color: #e9592d; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #e9592d; }
-    h3 { text-align: center; color: #e9592d; }
-    a { color: #e9592d; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
+    
+    h1 { 
+        font-size: 3.8em;
+        color: black;
+        text-shadow: 0px 1px 1px #555;
+        margin-bottom: 3px; 
+    }
+    
+    h1 .small { 
+        font-size: 0.4em; 
+    }
+    
+    h1 a { 
+        text-decoration: none 
+    }
+    
+    h2 { 
+        font-size: 1.5em; 
+        color: black;
+        font-family: Helvetica, Arial, FreeSans, san-serif; 
+    }
+    
+    h3 { text-align: center; 
+         color: #e9592d; 
+    }
+    
+    a { color: black; 
+    }
+
+    p {
+        line-height: 140%;
+    }
+
+    .description { 
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        font-weight: bold;
+    }
+    
+    .download { 
+        float: right; 
+    }
+    
+    pre {
+        background: #000; 
+        color: #fff;
+        padding: 15px;
+        font-family: Courier, "Courier New", Helvetica;
+    }
+
+    code {
+        font-family: Courier, "Courier New", Helvetica;
+        font-weight: bold;
+    }        
+
+
+    hr { 
+        border: 0; 
+        width: 80%; 
+        border-bottom: 1px solid #aaa
+   }
+   
+   .footer { 
+       text-align:center; 
+       padding-top:30px; 
+   }
+
   </style>
 </head>
 
 <body>
-  <a href="http://github.com/jmhodges/jsonpp"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  <a href="http://github.com/jmhodges/jsonpp"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+          src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
   <div id="container">
 
@@ -45,9 +105,12 @@
       A fast command line JSON pretty printer.
     </div>
 
-    <p><code>jsonpp</code> is a simple to install and fast to run command line JSON pretty printer. You'll love it.</p>
+    <p><code>jsonpp</code> is a simple-to-install and fast-to-run command line <strong>JSON pretty printer.</strong> You'll love it.</p>
+    
+    <h2>Dependencies</h2>
+    <p>Nada. Unless you build from source, and then it depends on <a href="http://golang.org/doc/install.html">go</a>.</p>
 
-    <h2>Install</h2>
+<h2>Binary Install</h2>
     <p>Grabbing the binary is the easiest way to do install <code>jsonpp</code>. It's a simple file.</p>
 
     <p>To begin, you'll want to download the zip file that matches your machine:<p>
@@ -58,30 +121,26 @@
       
     <p>Then, simply decompress those files and copy the <code>jsonpp</code> binary to somewhere in your <code>$PATH</code>. All you have left to do is to run:</p>
     <pre>curl -s -L http://t.co/tYTq5Pu | jsonpp</pre>
-    
-    <p>The source install requires a working <a href="http://golang.org/doc/install.html">Go install</a>. Once it's installed run <code>goinstall github.com/jmhodges/jsonpp<code>, or run <code>make install</code> yourself.</p>
 
-    <h2>Dependencies</h2>
-    <p>Nada.</p>
+<h2>Source Install</h2>
 
-    <p>Unless you build from source, and then it depends on a <a href="http://golang.org/doc/install.html">Go install</a>.</p>
+<p>The source install requires a working <a href="http://golang.org/doc/install.html">install of Go</a>. Once Go is installed run: 
+<pre>goinstall github.com/jmhodges/jsonpp</pre> 
+or run <code>make install</code> yourself.</p>
 
 <h2>License</h2>
 <p>MIT</p>
-<h2>Authors</h2>
-<p>Jeff Hodges (jeff@somethingsimilar.com)
-<br/>
-<br/>      </p>
-<h2>Contact</h2>
-<p>Jeff Hodges (jeff@somethingsimilar.com)
-<br/>      </p>
 
+<h2>Author</h2>
+<p>Jeff Hodges &mdash; jeff at somethingsimilar.com</p>
 
-    <h2>More</h2>
-    <p>As mentioned above, you can easily download the binary, but if you want the code, you can see <a href="http://github.com/jmhodges/jsonpp">find its repo easily</a>.</p>
-  </div>
+<h2>More</h2>
+<p>As mentioned above, you can easily download the binary, but if you want the code, you can
+<a href="http://github.com/jmhodges/jsonpp">check out the repo on GitHub</a>.</p>
 
-  <script type="text/javascript">
+</div>
+
+<script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
@@ -92,3 +151,5 @@ pageTracker._trackPageview();
 } catch(err) {}</script>
 </body>
 </html>
+
+
