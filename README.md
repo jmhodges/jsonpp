@@ -14,7 +14,7 @@ and make beautiful the files running around on your disk:
 Install
 -------
 
-Grabbing the binary is the easiest way to do install `jsonpp`. It's a simple file.
+Grabbing the binary is the easiest way to install `jsonpp`. It's a simple file.
 
 To begin, download the zip file that matches your machine:
 
