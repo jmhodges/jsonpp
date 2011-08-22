@@ -21,7 +21,7 @@ func main() {
 	for {
 		line, isPrefix, err := bufIn.ReadLine()
 		if err != nil && err != os.EOF {
-			errorOnRead(err)
+			genericError(err)
 		}
 
 		lastLine = append(lastLine, line...)
@@ -71,7 +71,8 @@ func fileFromArguments() *os.File {
 	flag.Parse()
 	args := flag.Args()
 	if len(args) > 1 {
-
+		msg := fmt.Sprintf("only specify 0 or 1 files in the arguments, not %d\n", len(args))
+		genericError(os.NewError(msg))
 	}
 	if len(args) == 0 {
 		return os.Stdin
@@ -79,12 +80,12 @@ func fileFromArguments() *os.File {
 	
 	file, err := os.OpenFile(args[0], os.O_RDONLY, 0)
 	if err != nil {
-		errorOnRead(err)
+		genericError(err)
 	}
 	return file
 }
 
-func errorOnRead(err os.Error) {
+func genericError(err os.Error) {
 	os.Stdout.Sync()
 	fmt.Fprintf(os.Stderr, "ERROR: %s", err)
 	os.Exit(2)
