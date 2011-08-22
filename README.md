@@ -1,7 +1,7 @@
-`jsonpp` is a command line JSON pretty printer.
-===============================================
+jsonpp
+======
 
-You'll love it.
+**A command line JSON pretty printer.**
 
 Pretty print web service responses like so:
 
