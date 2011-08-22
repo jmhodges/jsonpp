@@ -16,13 +16,13 @@ Install
 
 Grabbing the binary is the easiest way to do install `jsonpp`. It's a simple file.
 
-To begin, you'll want to download the zip file that matches your machine:
+To begin, download the zip file that matches your machine:
 
   * [jsonpp for OSX](http://github.com/jmhodges/jsonpp/downloads/jsonpp-1.0.0-osx-x86_64.zip)
   * [jsonpp for Linux](http://github.com/jmhodges/jsonpp/downloads/jsonpp-1.0.0-linux-x86_64.zip)
       
-Then, simply decompress that file and copy the `jsonpp` binary
-inside to somewhere in your `$PATH`.
+Then, decompress that zip file, and copy the `jsonpp` file inside to somewhere
+in your `$PATH`.
 
 To see it in action, pipe some example JSON into it:
     curl -s -L http://t.co/tYTq5Pu | jsonpp
