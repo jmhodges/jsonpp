@@ -40,8 +40,8 @@
         font-family: Helvetica, Arial, FreeSans, san-serif; 
     }
     
-    h3 { text-align: center; 
-         color: #e9592d; 
+    h3 {
+        color: black;
     }
     
     a { color: #7D3232; 
@@ -65,7 +65,7 @@
     pre {
         background: #000; 
         color: #fff;
-        padding: 15px;
+        padding: 10px;
         font-family: Courier, "Courier New", Helvetica;
     }
 
@@ -81,10 +81,14 @@
 
     hr { 
         border: 0; 
-        width: 80%; 
+        width: 100%; 
         border-bottom: 1px solid #aaa
    }
-   
+
+   .install-doc {
+        margin: 0px;
+   }
+
    .footer { 
        text-align:center; 
        padding-top:30px; 
@@ -113,37 +117,61 @@
     
     <p>And new favorites such as:</p>
     <pre>jsonpp data/long_malformed.json</pre>
+    <hr />
 
-    <h2>Install it the easy way</h2>
-    <p>Grabbing the binary is the easiest way to install <code>jsonpp</code>. It's a simple file.</p>
+    <h2>Three Easy Ways to Get Going</h2>
+    <h3>Copy from a Zip</h3>
+    <div class="install-doc">
+      <p>Grabbing the binary is the easiest way to install <code>jsonpp</code>. It's a simple file.</p>
 
-    <p>To begin, download the zip file that matches your machine:<p>
-      <ul>
-        <li><a href="http://github.com/jmhodges/jsonpp/downloads/jsonpp-1.0.0-osx-x86_64.zip">jsonpp for OS X</a></li>
-        <li><a href="http://github.com/jmhodges/jsonpp/downloads/jsonpp-1.0.0-linux-x86_64.zip">jsonpp for Linux</a></li>
-      </ul>
+      <p>To begin, download the zip file that matches your machine:<p>
+        <ul>
+          <li><a href="http://github.com/jmhodges/jsonpp/downloads/jsonpp-1.0.0-osx-x86_64.zip">jsonpp for OS X</a></li>
+          <li><a href="http://github.com/jmhodges/jsonpp/downloads/jsonpp-1.0.0-linux-x86_64.zip">jsonpp for Linux</a></li>
+        </ul>
       
-    <p>Then, decompress that zip file and copy the <code>jsonpp</code> file inside to somewhere in your <code>$PATH</code>.</p>
+      <p>Then, decompress that zip file and copy the <code>jsonpp</code> file inside to somewhere in your <code>$PATH</code>.</p>
     
-    <p>To see it in action, pipe some example JSON into it:</p>
-    <pre>curl -s -L http://t.co/tYTq5Pu | jsonpp</pre>
+    </div>
 
-    <h2>Install it the slightly less easy way</h2>
+    <h3><i>or </i> Straight through Brew</h3>
+    <div class="install-doc">
+      <p>If you're on OS X, and have <a href="http://mxcl.github.com/homebrew/">homebrew</a> installed, you can simply run:</p>
+      <pre>brew install jsonpp</pre>
+    </div>
 
-    <p>The source install requires a working <a href="http://golang.org/doc/install.html">install of Go</a>. Once Go is installed run:</p>
+    <h3><i>or </i> Compile from the Source</h3>
+    <div class="install-doc">
+      <p>The source install requires a working <a href="http://golang.org/doc/install.html">install of Go</a>. Once Go is installed run:</p>
 
-    <pre>goinstall github.com/jmhodges/jsonpp</pre>
+      <pre>goinstall github.com/jmhodges/jsonpp</pre>
 
-    <p>or run <code>make install</code> yourself.</p>
+      <p>or run <code>make install</code> yourself.</p>
+    </div>
+    <hr />    
+
+    <h2>Watch it Go</h2>
+    <div class="install-doc">    
+      <p>To see <code>jsonpp</code> in action, pipe some example JSON into it:</p>
+      <pre>curl -s -L http://t.co/tYTq5Pu | jsonpp</pre>
+      </div>
+    <hr />
+      
 
     <h2>Dependencies</h2>
     <p>Nada. Unless you build from source, and then it depends on <a href="http://golang.org/doc/install.html">go</a>.</p>
 
+    <hr />
+
 <h2>License</h2>
 <p>MIT</p>
+    <hr />
+
 
 <h2>Author</h2>
 <p><a href="http://somethingsimilar.com/about">Jeff Hodges</a></p>
+
+    <hr />
 
 <h2>More</h2>
 <p>As mentioned above, you can easily download the binary, but if you want the code, you can
