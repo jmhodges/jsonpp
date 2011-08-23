@@ -40,8 +40,8 @@
         font-family: Helvetica, Arial, FreeSans, san-serif; 
     }
     
-    h3 { text-align: center; 
-         color: #e9592d; 
+    h3 {
+        color: #e9592d;
     }
     
     a { color: #7D3232; 
@@ -114,7 +114,9 @@
     <p>And new favorites such as:</p>
     <pre>jsonpp data/long_malformed.json</pre>
 
-    <h2>Install it the easy way</h2>
+    <h2>Three Easy Ways to Get Going</h2>
+    <h3>1. Straight from the Zip</h3>
+    <div>
     <p>Grabbing the binary is the easiest way to install <code>jsonpp</code>. It's a simple file.</p>
 
     <p>To begin, download the zip file that matches your machine:<p>
@@ -127,15 +129,22 @@
     
     <p>To see it in action, pipe some example JSON into it:</p>
     <pre>curl -s -L http://t.co/tYTq5Pu | jsonpp</pre>
+    </div>
 
-    <h2>Install it the slightly less easy way</h2>
+    <h3>2. Straight through Brew</h3>
+    <div>
+    <p>If you're on OS X, and have <a href="http://mxcl.github.com/homebrew/">homebrew</a> installed, you can simply run:</p>
+    <pre>brew install jsonpp</pre>
+    </div>
 
+    <h3>3. Compiling from the Source</h3>
+    <div>
     <p>The source install requires a working <a href="http://golang.org/doc/install.html">install of Go</a>. Once Go is installed run:</p>
 
     <pre>goinstall github.com/jmhodges/jsonpp</pre>
 
     <p>or run <code>make install</code> yourself.</p>
-
+    </div>
     <h2>Dependencies</h2>
     <p>Nada. Unless you build from source, and then it depends on <a href="http://golang.org/doc/install.html">go</a>.</p>
 
