@@ -14,7 +14,7 @@ var newline = []uint8("\n")
 func main() {
 	bufIn := bufio.NewReader(fileFromArguments())
 	lastLine := []uint8("")
-	// One meg is good enough for anybody
+
 	arr := make([]byte, 0, 1024*1024)
 	buf := bytes.NewBuffer(arr)
 	lineNum := int64(1)
