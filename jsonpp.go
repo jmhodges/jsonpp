@@ -1,11 +1,13 @@
 package main
 
 import (
-	"bytes"
 	"bufio"
+	"bytes"
+	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
-	"json"
+	"io"
 	"os"
 )
 
@@ -20,7 +22,7 @@ func main() {
 	lineNum := int64(1)
 	for {
 		line, isPrefix, err := bufIn.ReadLine()
-		if err != nil && err != os.EOF {
+		if err != nil && err != io.EOF {
 			genericError(err)
 		}
 
@@ -31,7 +33,7 @@ func main() {
 			lastLine = []uint8("")
 		}
 
-		if err == os.EOF {
+		if err == io.EOF {
 			os.Exit(0)
 		}
 	}
@@ -39,22 +41,22 @@ func main() {
 
 func indentAndPrint(buf *bytes.Buffer, js []uint8, lineNum int64) {
 	jsErr := json.Indent(buf, js, "", "  ")
-	if (jsErr != nil) {
-		malformedJson(jsErr, js, lineNum)
+	if jsErr != nil {
+		malformedJSON(jsErr, js, lineNum)
 	}
 	os.Stdout.Write(buf.Bytes())
 	os.Stdout.Write(newline)
 	buf.Reset()
 }
 
-func malformedJson(jsErr os.Error, js []uint8, lineNum int64) {
+func malformedJSON(jsErr error, js []uint8, lineNum int64) {
 	os.Stdout.Sync()
 
 	synErr, isSynError := (jsErr).(*json.SyntaxError)
 
 	fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d: %s\n", lineNum, jsErr)
 
-	if (isSynError) {
+	if isSynError {
 		prefix := ""
 		suffix := ""
 
@@ -82,12 +84,12 @@ func fileFromArguments() *os.File {
 	args := flag.Args()
 	if len(args) > 1 {
 		msg := fmt.Sprintf("only specify 0 or 1 files in the arguments, not %d\n", len(args))
-		genericError(os.NewError(msg))
+		genericError(errors.New(msg))
 	}
 	if len(args) == 0 {
 		return os.Stdin
 	}
-	
+
 	file, err := os.OpenFile(args[0], os.O_RDONLY, 0)
 	if err != nil {
 		genericError(err)
@@ -95,7 +97,7 @@ func fileFromArguments() *os.File {
 	return file
 }
 
-func genericError(err os.Error) {
+func genericError(err error) {
 	os.Stdout.Sync()
 	fmt.Fprintf(os.Stderr, "ERROR: %s", err)
 	os.Exit(2)
