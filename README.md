@@ -14,7 +14,7 @@ and make beautiful the files running around on your disk:
 Install
 -------
 
-Installable with `brew install jsonpp`, `github.com/jmhodges/jsonpp` or `make`
+Installable with `go get github.com/jmhodges/jsonpp`, `brew install jsonpp`,
 or copying the binary to your `$PATH`. See the [live
 documentation](http://jmhodges.github.com/jsonpp/) for details.
 
