@@ -14,6 +14,19 @@ import (
 var newline = []uint8("\n")
 
 func main() {
+
+	var help = flag.Bool("help", false, "help")
+	flag.Parse()
+	if *help {
+		cmd := os.Args[0]
+		if cmd[0:2] == "./" {
+			cmd = cmd[2:]
+		}
+		fmt.Fprintf(os.Stderr, "Usage: "+cmd+" [file]"+"\n")
+		fmt.Fprintf(os.Stderr, "   or: $COMMAND | "+cmd+"\n")
+		os.Exit(0)
+	}
+
 	bufIn := bufio.NewReader(fileFromArguments())
 	lastLine := []uint8("")
 
