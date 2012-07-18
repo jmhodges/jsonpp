@@ -92,7 +92,6 @@ func malformedJSON(jsErr error, js []uint8, lineNum int64) {
 }
 
 func fileFromArguments() *os.File {
-	flag.Parse()
 	args := flag.Args()
 	if len(args) > 1 {
 		msg := fmt.Sprintf("only specify 0 or 1 files in the arguments, not %d\n", len(args))
