@@ -12,10 +12,9 @@ import (
 )
 
 var newline = []uint8("\n")
+var help = flag.Bool("help", false, "help")
 
 func main() {
-
-	var help = flag.Bool("help", false, "help")
 	flag.Parse()
 	if *help {
 		cmd := os.Args[0]
