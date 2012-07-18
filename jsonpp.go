@@ -42,7 +42,7 @@ func main() {
 		if !isPrefix && len(lastLine) != 0 {
 			indentAndPrint(buf, lastLine, lineNum)
 			lineNum += 1
-			lastLine = []byte{}
+			lastLine = lastLine[0:0]
 		}
 
 		if err == io.EOF {
