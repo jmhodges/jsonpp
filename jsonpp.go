@@ -27,7 +27,7 @@ func main() {
 	}
 
 	bufIn := bufio.NewReader(fileFromArguments())
-	lastLine := []uint8("")
+	lastLine := []byte{}
 
 	arr := make([]byte, 0, 1024*1024)
 	buf := bytes.NewBuffer(arr)
@@ -42,7 +42,7 @@ func main() {
 		if !isPrefix && len(lastLine) != 0 {
 			indentAndPrint(buf, lastLine, lineNum)
 			lineNum += 1
-			lastLine = []uint8("")
+			lastLine = []byte{}
 		}
 
 		if err == io.EOF {
@@ -51,7 +51,7 @@ func main() {
 	}
 }
 
-func indentAndPrint(buf *bytes.Buffer, js []uint8, lineNum int64) {
+func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64) {
 	jsErr := json.Indent(buf, js, "", "  ")
 	if jsErr != nil {
 		malformedJSON(jsErr, js, lineNum)
