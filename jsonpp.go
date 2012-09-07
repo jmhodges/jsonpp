@@ -46,7 +46,7 @@ func main() {
 		}
 
 		if err == io.EOF {
-			os.Exit(0)
+			break
 		}
 	}
 }
