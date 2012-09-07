@@ -27,23 +27,18 @@ func main() {
 	}
 
 	bufIn := bufio.NewReader(fileFromArguments())
-	lastLine := []byte{}
-
 	arr := make([]byte, 0, 1024*1024)
 	buf := bytes.NewBuffer(arr)
 	lineNum := int64(1)
 	for {
-		line, isPrefix, err := bufIn.ReadLine()
+		lastLine, err := bufIn.ReadBytes('\n')
 		if err != nil && err != io.EOF {
 			genericError(err)
 		}
 
-		lastLine = append(lastLine, line...)
-		if !isPrefix && len(lastLine) != 0 {
-			indentAndPrint(buf, lastLine, lineNum)
-			lineNum += 1
-			lastLine = lastLine[0:0]
-		}
+		indentAndPrint(buf, lastLine, lineNum)
+		lineNum += 1
+		lastLine = lastLine[0:0]
 
 		if err == io.EOF {
 			break
