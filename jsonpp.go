@@ -37,6 +37,7 @@ func main() {
 		}
 
 		indentAndPrint(buf, lastLine, lineNum)
+		buf.Reset()
 		lineNum += 1
 		lastLine = lastLine[0:0]
 
@@ -53,16 +54,13 @@ func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64) {
 	}
 	os.Stdout.Write(buf.Bytes())
 	os.Stdout.Write(newline)
-	buf.Reset()
 }
 
 func malformedJSON(jsErr error, js []uint8, lineNum int64) {
 	os.Stdout.Sync()
-
-	synErr, isSynError := (jsErr).(*json.SyntaxError)
-
 	fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d: %s\n", lineNum, jsErr)
 
+	synErr, isSynError := (jsErr).(*json.SyntaxError)
 	if isSynError {
 		prefix := ""
 		suffix := ""
