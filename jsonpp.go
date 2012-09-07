@@ -39,7 +39,6 @@ func main() {
 		indentAndPrint(buf, lastLine, lineNum)
 		buf.Reset()
 		lineNum += 1
-		lastLine = lastLine[0:0]
 
 		if err == io.EOF {
 			break
