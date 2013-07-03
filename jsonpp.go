@@ -79,8 +79,8 @@ func malformedJSON(jsErr error, js []uint8, lineNum int64) {
 		} else {
 			suffix = "..."
 		}
-
-		fmt.Fprintf(os.Stderr, "  Context: %s%s%s\n", prefix, js[begin:end], suffix)
+		b := bytes.TrimRight(js[begin:end], "\r\n")
+		fmt.Fprintf(os.Stderr, "  Context: %s%s%s\n", prefix, b, suffix)
 	} else {
 		fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d: %s\n", lineNum, jsErr)
 	}
