@@ -15,9 +15,6 @@ func TestFiles(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, i := range infos {
-		if i.Name() == "tweet.json" {
-			continue
-		}
 		if strings.HasPrefix(i.Name(), "expected_") {
 			continue
 		}
