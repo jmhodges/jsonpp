@@ -60,10 +60,10 @@ func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64) {
 
 func malformedJSON(jsErr error, js []uint8, lineNum int64) {
 	os.Stdout.Sync()
-	fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d: %s\n", lineNum, jsErr)
 
 	synErr, isSynError := (jsErr).(*json.SyntaxError)
 	if isSynError {
+		fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d, char %d: %s\n", lineNum, synErr.Offset, jsErr)
 		prefix := ""
 		suffix := ""
 
@@ -81,6 +81,8 @@ func malformedJSON(jsErr error, js []uint8, lineNum int64) {
 		}
 
 		fmt.Fprintf(os.Stderr, "  Context: %s%s%s\n", prefix, js[begin:end], suffix)
+	} else {
+		fmt.Fprintf(os.Stderr, "ERROR: Broken json on line %d: %s\n", lineNum, jsErr)
 	}
 
 	os.Exit(1)
