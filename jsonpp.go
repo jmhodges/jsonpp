@@ -36,6 +36,10 @@ func main() {
 			genericError(err)
 		}
 
+		if err == io.EOF && len(lastLine) == 0 {
+			break
+		}
+
 		indentAndPrint(buf, lastLine, lineNum)
 		buf.Reset()
 		lineNum += 1
@@ -52,7 +56,6 @@ func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64) {
 		malformedJSON(jsErr, js, lineNum)
 	}
 	os.Stdout.Write(buf.Bytes())
-	os.Stdout.Write(newline)
 }
 
 func malformedJSON(jsErr error, js []uint8, lineNum int64) {
