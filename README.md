@@ -11,6 +11,9 @@ and make beautiful the files running around on your disk:
 
     jsonpp data/long_malformed.json
 
+By default jsonpp uses two spaces for indentation. Use -tabs to indent with
+tabs and -spaces=N (N > 0) to indent with an arbitrary number of spaces.
+
 Install
 -------
 

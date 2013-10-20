@@ -1,0 +1,3 @@
+{}
+ERROR: Broken json on line 2, char 1: invalid character '}' looking for beginning of value
+  Context: }
