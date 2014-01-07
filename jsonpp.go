@@ -83,7 +83,13 @@ func processFile(fn *os.File) int {
 }
 
 func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64) int {
-	jsErr := json.Indent(buf, js, "", "  ")
+	indent := os.Getenv("JSONPP_INDENT")
+	if indent == "" {
+		indent = "  "
+	}
+
+	jsErr := json.Indent(buf, js, "", indent)
+
 	if jsErr != nil {
 		malformedJSON(jsErr, js, lineNum)
 		return 1
