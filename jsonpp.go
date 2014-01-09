@@ -25,6 +25,11 @@ func main() {
 		os.Exit(0)
 	}
 
+	indent := os.Getenv("JSONPP_INDENT")
+	if indent == "" {
+		indent = "  "
+	}
+
 	var exitStatus = 0
 	if len(flag.Args()) > 0 {
 		for _, filename := range flag.Args() {
@@ -36,13 +41,13 @@ func main() {
 			}
 			defer file.Close()
 
-			status := processFile(file)
+			status := processFile(file, indent)
 			if status > 0 {
 				exitStatus = status
 			}
 		}
 	} else {
-		status := processFile(os.Stdin)
+		status := processFile(os.Stdin, indent)
 		if status > 0 {
 			exitStatus = status
 		}
@@ -50,7 +55,7 @@ func main() {
 	os.Exit(exitStatus)
 }
 
-func processFile(fn *os.File) int {
+func processFile(fn *os.File, indent string) int {
 	bufIn := bufio.NewReader(fn)
 	arr := make([]byte, 0, 1024*1024)
 	buf := bytes.NewBuffer(arr)
@@ -66,7 +71,7 @@ func processFile(fn *os.File) int {
 			break
 		}
 
-		status := indentAndPrint(buf, lastLine, lineNum)
+		status := indentAndPrint(buf, lastLine, lineNum, indent)
 		if status > 0 {
 			return status
 		}
@@ -82,14 +87,8 @@ func processFile(fn *os.File) int {
 	return 0
 }
 
-func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64) int {
-	indent := os.Getenv("JSONPP_INDENT")
-	if indent == "" {
-		indent = "  "
-	}
-
+func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64, indent string) int {
 	jsErr := json.Indent(buf, js, "", indent)
-
 	if jsErr != nil {
 		malformedJSON(jsErr, js, lineNum)
 		return 1
