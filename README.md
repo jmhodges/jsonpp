@@ -18,6 +18,12 @@ Installable with `go get github.com/jmhodges/jsonpp`, `brew install jsonpp`,
 or copying the binary to your `$PATH`. See the [live
 documentation](http://jmhodges.github.com/jsonpp/) for details.
 
+Options
+-------
+
+The string used for indentation defaults to 2 spaces, but can be overridden
+by the environment variable `JSONPP_INDENT`.
+
 Special Note on JSON files
 --------------------------
 
