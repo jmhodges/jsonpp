@@ -7,11 +7,16 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 )
 
+var (
+	single = flag.Bool("s", false, "parse already formatted JSON by interpretinting each input stream as a single JSON object")
+	help   = flag.Bool("help", false, "help")
+)
+
 var newline = []uint8("\n")
-var help = flag.Bool("help", false, "help")
 
 func main() {
 	flag.Parse()
@@ -30,6 +35,11 @@ func main() {
 		indent = "  "
 	}
 
+	processFunc := processMultipleFile
+	if *single {
+		processFunc = processSingularFile
+	}
+
 	var exitStatus = 0
 	if len(flag.Args()) > 0 {
 		for _, filename := range flag.Args() {
@@ -41,21 +51,18 @@ func main() {
 			}
 			defer file.Close()
 
-			status := processFile(file, indent)
-			if status > 0 {
-				exitStatus = status
+			exitStatus = processFunc(file, indent)
+			if exitStatus > 0 {
+				break
 			}
 		}
 	} else {
-		status := processFile(os.Stdin, indent)
-		if status > 0 {
-			exitStatus = status
-		}
+		exitStatus = processFunc(os.Stdin, indent)
 	}
 	os.Exit(exitStatus)
 }
 
-func processFile(fn *os.File, indent string) int {
+func processMultipleFile(fn *os.File, indent string) int {
 	bufIn := bufio.NewReader(fn)
 	arr := make([]byte, 0, 1024*1024)
 	buf := bytes.NewBuffer(arr)
@@ -85,6 +92,18 @@ func processFile(fn *os.File, indent string) int {
 	}
 
 	return 0
+}
+
+func processSingularFile(fn *os.File, indent string) int {
+	b, err := ioutil.ReadAll(fn)
+	if err != nil {
+		printError(err)
+		return 2
+	}
+	b = bytes.Join(bytes.Split(b, newline), nil)
+	arr := make([]byte, 0, 1024*1024)
+	buf := bytes.NewBuffer(arr)
+	return indentAndPrint(buf, b, 1, indent)
 }
 
 func indentAndPrint(buf *bytes.Buffer, js []byte, lineNum int64, indent string) int {
