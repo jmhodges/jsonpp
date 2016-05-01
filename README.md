@@ -9,7 +9,11 @@ Pretty print web service responses like so:
 
 and make beautiful the files running around on your disk:
 
-    jsonpp data/long_malformed.json
+    jsonpp testdata/multiple/multiple.json
+
+You can also format previously pretty-printed code with "-s":
+
+    jsonpp -s testdata/one/singular.json
 
 Install
 -------
@@ -24,9 +28,4 @@ Options
 The string used for indentation defaults to 2 spaces, but can be overridden
 by the environment variable `JSONPP_INDENT`.
 
-Special Note on JSON files
---------------------------
-
-`jsonpp` assumes that there are one or more JSON objects in a given file,
-seperated by newlines.
-
+Adding the "-s" parameter will allow you to format already formatted JSON code by assuming the entire input stream is one JSON object.
