@@ -15,6 +15,12 @@ You can also format previously pretty-printed code with "-s":
 
     jsonpp -s testdata/one/singular.json
 
+Jsonpp exists because a friend was building against an API with large JSON APIs
+and was tired of the noticable wait times that other languages' tooling
+had. Then, jsonpp turned out to be pretty nice for parsing the JSON log files we
+had lying around and I made it a thing.
+
+
 Install
 -------
 
