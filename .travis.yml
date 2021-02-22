@@ -1,8 +1,7 @@
 language: go
 go:
   - 1.6
-
-sudo: false
+  - 1.16
 
 branches:
   only:
