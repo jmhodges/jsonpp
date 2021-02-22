@@ -26,6 +26,9 @@ jobs:
           go-version: ${{ steps.go_versions.outputs.go_version }}
         id: go
 
+      - name: Build jsonpp for integration test
+        run: go build -race .
+
       - name: Run tests
         run: |
-          go test -mod=vendor -race .
+          go test -race .
