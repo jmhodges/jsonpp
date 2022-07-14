@@ -26,7 +26,7 @@ Install
 
 Installable with `go get github.com/jmhodges/jsonpp`, `brew install jsonpp`,
 or copying the binary to your `$PATH`. See the [live
-documentation](http://jmhodges.github.com/jsonpp/) for details.
+documentation](http://jmhodges.github.io/jsonpp/) for details.
 
 Options
 -------
